@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Discover Shangqiu</title>
+  <style>
+    :root {
+      --deep-blue: #1F2A30;
+      --blue-gray: #4A5C63;
+      --vermilion: #9E2B25;
+      --ivory: #F4F1EA;
+      --warm-gold: #C2A878;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--ivory);
+      color: var(--deep-blue);
+      line-height: 1.7;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      background: rgba(31, 42, 48, 0.95);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid rgba(194, 168, 120, 0.3);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      color: var(--ivory);
+      font-size: 1.3rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--ivory);
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--warm-gold);
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 92vh;
+      background:
+        linear-gradient(rgba(31, 42, 48, 0.58), rgba(31, 42, 48, 0.72)),
+        url("images/2.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      color: var(--ivory);
+      padding: 60px 0;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--warm-gold);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.9rem;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      max-width: 620px;
+      color: rgba(244, 241, 234, 0.92);
+      margin-bottom: 28px;
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background: var(--vermilion);
+      color: var(--ivory);
+      padding: 14px 28px;
+      border-radius: 999px;
+      border: 2px solid var(--vermilion);
+      transition: 0.3s ease;
+      font-weight: bold;
+    }
+
+    .hero-btn:hover {
+      background: transparent;
+      border-color: var(--warm-gold);
+      color: var(--warm-gold);
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 18px;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--deep-blue);
+    }
+
+    .section-intro {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 50px;
+      color: var(--blue-gray);
+      font-size: 1rem;
+    }
+
+    /* Why Shangqiu */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+    }
+
+    .why-card {
+      background: #ffffff;
+      padding: 32px 24px;
+      border-radius: 18px;
+      border-top: 5px solid var(--warm-gold);
+      box-shadow: 0 10px 25px rgba(31, 42, 48, 0.08);
+      transition: 0.3s ease;
+    }
+
+    .why-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .why-card h3 {
+      margin-bottom: 12px;
+      color: var(--deep-blue);
+      font-size: 1.25rem;
+    }
+
+    .why-card p {
+      color: var(--blue-gray);
+      font-size: 0.96rem;
+    }
+
+    /* Attractions */
+    .attractions {
+      background: #fff;
+    }
+
+    .attraction-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+
+    .attraction-card {
+      background: var(--ivory);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(31, 42, 48, 0.08);
+    }
+
+    .attraction-card img {
+      height: 260px;
+      object-fit: cover;
+    }
+
+    .card-text {
+      padding: 24px;
+    }
+
+    .card-text h3 {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: var(--deep-blue);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .card-text p {
+      color: var(--blue-gray);
+      font-size: 0.96rem;
+    }
+
+    /* Experience section */
+    .experience {
+      background: linear-gradient(to right, rgba(194, 168, 120, 0.12), rgba(31, 42, 48, 0.04));
+    }
+
+    .timeline {
+      max-width: 760px;
+      margin: 0 auto;
+      display: grid;
+      gap: 18px;
+    }
+
+    .time-item {
+      background: white;
+      border-left: 6px solid var(--vermilion);
+      padding: 22px 24px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(31, 42, 48, 0.07);
+    }
+
+    .time-item h4 {
+      margin-bottom: 8px;
+      color: var(--deep-blue);
+      font-size: 1.1rem;
+    }
+
+    .time-item p {
+      color: var(--blue-gray);
+    }
+
+    /* Food */
+    .food-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .food-card {
+      background: white;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(31, 42, 48, 0.08);
+    }
+
+    .food-card img {
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .food-card .card-text {
+      padding: 22px;
+    }
+
+    /* CTA */
+    .cta {
+      background: var(--deep-blue);
+      color: var(--ivory);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 16px;
+    }
+
+    .cta p {
+      max-width: 700px;
+      margin: 0 auto 28px;
+      color: rgba(244, 241, 234, 0.85);
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 14px 30px;
+      border-radius: 999px;
+      background: var(--vermilion);
+      color: var(--ivory);
+      border: 2px solid var(--vermilion);
+      transition: 0.3s ease;
+      font-weight: bold;
+    }
+
+    .cta a:hover {
+      background: transparent;
+      border-color: var(--warm-gold);
+      color: var(--warm-gold);
+    }
+
+    footer {
+      background: #182126;
+      color: rgba(244, 241, 234, 0.75);
+      text-align: center;
+      padding: 22px 0;
+      font-size: 0.92rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .why-grid,
+      .food-grid,
+      .attraction-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .nav-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 64px 0;
+      }
+
+      .hero {
+        min-height: 86vh;
+      }
+
+      .hero-content {
+        text-align: center;
+      }
+
+      .hero p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">Shangqiu</div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#attractions">Attractions</a>
+        <a href="#experience">Experience</a>
+        <a href="#food">Food</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <span class="hero-tag">A Hidden Historical Destination</span>
+        <h1>Discover the Timeless Charm of Shangqiu</h1>
+        <p>
+          Shangqiu is a city where ancient history, quiet streets, cultural memory,
+          and local life come together. It is not loud, but it leaves a deep impression.
+        </p>
+        <a href="#about" class="hero-btn">Start the Journey</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Why Shangqiu?</h2>
+      <p class="section-intro">
+        Shangqiu is known as one of the important birthplaces of Shang culture.
+        With its ancient city walls, traditional streets, peaceful lake views,
+        and long cultural history, it offers a calm and meaningful travel experience.
+      </p>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <h3>Profound History</h3>
+          <p>
+            Shangqiu carries the memory of thousands of years. It is a city deeply connected
+            to the origins of Chinese civilization and traditional culture.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <h3>Ancient City Scenery</h3>
+          <p>
+            The old city preserves its historical layout, where walls, streets,
+            and courtyards still reflect the rhythm of everyday life.
+          </p>
+        </div>
+
+        <div class="why-card">
+          <h3>City and Lake Together</h3>
+          <p>
+            The connection between the ancient city and South Lake creates a unique landscape
+            full of reflection, silence, and gentle beauty.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="attractions" id="attractions">
+    <div class="container">
+      <h2 class="section-title">Top Attractions</h2>
+      <p class="section-intro">
+        Explore the most representative places in Shangqiu and experience the city
+        through its architecture, waterside views, and cultural landmarks.
+      </p>
+
+      <div class="attraction-grid">
+        <div class="attraction-card">
+          <img src="images/3.jpg" alt="Shangqiu Ancient City">
+          <div class="card-text">
+            <h3>Shangqiu Ancient City</h3>
+            <p>
+              A living ancient city where old walls, traditional lanes, and local life
+              still exist side by side. It is the heart of Shangqiu’s cultural identity.
+            </p>
+          </div>
+        </div>
+
+        <div class="attraction-card">
+          <img src="images/4.jpg" alt="South Lake">
+          <div class="card-text">
+            <h3>South Lake</h3>
+            <p>
+              A peaceful waterside area beside the ancient city. At sunset,
+              the lake reflects the city walls and creates a soft, poetic atmosphere.
+            </p>
+          </div>
+        </div>
+
+        <div class="attraction-card">
+          <img src="images/5.jpg" alt="Yingtian Academy">
+          <div class="card-text">
+            <h3>Yingtian Academy</h3>
+            <p>
+              One of the famous ancient academies in Chinese history.
+              Its quiet courtyards and scholarly atmosphere show the educational spirit of the past.
+            </p>
+          </div>
+        </div>
+
+        <div class="attraction-card">
+          <img src="images/6.jpg" alt="Huoshen Platform">
+          <div class="card-text">
+            <h3>Huoshen Platform</h3>
+            <p>
+              A historical site associated with ancient fire worship and cultural legend.
+              It adds mystery and depth to the story of Shangqiu.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="experience" id="experience">
+    <div class="container">
+      <h2 class="section-title">A Day in Shangqiu</h2>
+      <p class="section-intro">
+        Shangqiu is best enjoyed slowly. Its beauty is found in quiet moments,
+        warm light, and the feeling of walking through history.
+      </p>
+
+      <div class="timeline">
+        <div class="time-item">
+          <h4>Morning</h4>
+          <p>Begin your day by walking through the old streets of Shangqiu Ancient City.</p>
+        </div>
+
+        <div class="time-item">
+          <h4>Afternoon</h4>
+          <p>Visit Yingtian Academy and enjoy the calm, scholarly spirit of the historic site.</p>
+        </div>
+
+        <div class="time-item">
+          <h4>Evening</h4>
+          <p>Watch the golden light fade over South Lake and feel the city become softer and quieter.</p>
+        </div>
+
+        <div class="time-item">
+          <h4>Night</h4>
+          <p>Stay a little longer and see the ancient city under warm lights and peaceful skies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="food">
+    <div class="container">
+      <h2 class="section-title">Taste of Shangqiu</h2>
+      <p class="section-intro">
+        Shangqiu’s food is simple, warm, and full of local character.
+        It reflects the city’s everyday life and traditional flavors.
+      </p>
+
+      <div class="food-grid">
+        <div class="food-card">
+          <img src="images/7.jpg" alt="Shui Ji Mo">
+          <div class="card-text">
+            <h3>Shui Ji Mo</h3>
+            <p>
+              A traditional local dish known for its soft texture and comforting taste.
+              It represents the familiar warmth of regional cuisine.
+            </p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/8.jpg" alt="Hu La Tang">
+          <div class="card-text">
+            <h3>Hu La Tang</h3>
+            <p>
+              A popular spicy soup in Henan. Rich, hot, and satisfying,
+              it is one of the most beloved breakfast flavors in the region.
+            </p>
+          </div>
+        </div>
+
+        <div class="food-card">
+          <img src="images/9.jpg" alt="Sesame Flatbread with Beef">
+          <div class="card-text">
+            <h3>Sesame Flatbread with Beef</h3>
+            <p>
+              Crispy on the outside and flavorful inside, this local snack is simple,
+              filling, and easy to love.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="container">
+      <h2>Visit Shangqiu</h2>
+      <p>
+        Slow down, walk through its ancient streets, and discover a city
+        where culture, scenery, and memory still live together.
+      </p>
+      <a href="index.html">Back to Home</a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      Tourism Promotion Webpage for Shangqiu | HTML & CSS Project
+    </div>
+  </footer>
+
+</body>
+</html>
